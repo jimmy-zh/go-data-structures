@@ -17,9 +17,9 @@ func NewCC(udg *dgraph.UndirectedGraph) *CC {
 		id:   make([]int, udg.GetV()),
 	}
 
-	for i := 0; i < udg.GetV(); i++ {
-		if !cc.mark[i] {
-			agraph.UndirectedDfsRecursion(udg, i, -1, cc.processed, cc.process)
+	for s := 0; s < udg.GetV(); s++ {
+		if !cc.mark[s] {
+			agraph.UndirectedDfsRecursion(udg, s, -1, cc.processed, cc.process)
 			cc.count++
 		}
 	}
