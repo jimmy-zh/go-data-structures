@@ -6,7 +6,7 @@ import (
 	"data-structures/stack"
 )
 
-//Path focuses the path from the source vertex to the target vertex
+//Path focuses on the path from the source vertex to the target vertex
 
 type Path struct {
 	mark   []bool

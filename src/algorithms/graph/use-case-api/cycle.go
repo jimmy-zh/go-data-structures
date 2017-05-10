@@ -4,6 +4,8 @@ import (
 	dgraph "data-structures/graph"
 )
 
+//Cycle focuses on whether the graph is acylic or not
+
 type Cycle struct {
 	mark     []bool
 	hasCycle bool

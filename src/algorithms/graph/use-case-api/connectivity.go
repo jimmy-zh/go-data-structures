@@ -5,7 +5,7 @@ import (
 	agraph "algorithms/graph"
 )
 
-//Connectivity focuses the connectivity between the source vertex and the target vertex
+//Connectivity focuses on the connectivity between the source vertex and the target vertex
 
 type Connectivity struct {
 	mark  []bool

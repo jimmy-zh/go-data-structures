@@ -5,6 +5,8 @@ import (
 	agraph "algorithms/graph"
 )
 
+//CC focuses on the connected components in a graph
+
 type CC struct {
 	mark  []bool
 	id    []int

@@ -6,6 +6,8 @@ import (
 	"data-structures/stack"
 )
 
+//ShortestPath focuses on the shortest path from the source vertex to the target vertex
+
 type ShortestPath struct {
 	mark   []bool
 	record []int
