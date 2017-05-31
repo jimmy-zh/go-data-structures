@@ -1,14 +1,14 @@
 package graph
 
-import "bag"
+import "data-structures/bag"
 
-type UndirectedGraph struct {
+type UdGraph struct {
 	adj    []*bag.Bag
 	vCount int
 	eCount int
 }
 
-func NewUndirectedGraph(vCount int) *UndirectedGraph {
+func NewUdGraph(vCount int) *UdGraph {
 	if vCount <= 0 {
 		return nil
 	}
@@ -16,13 +16,13 @@ func NewUndirectedGraph(vCount int) *UndirectedGraph {
 	for k := range adj {
 		adj[k] = bag.NewBag()
 	}
-	return &UndirectedGraph{
+	return &UdGraph{
 		adj:    adj,
 		vCount: vCount,
 	}
 }
 
-func (udg *UndirectedGraph) AddEdge(from, to int) {
+func (udg *UdGraph) AddEdge(from, to int) {
 	if from >= udg.vCount || to >= udg.vCount {
 		return
 	}
@@ -31,17 +31,17 @@ func (udg *UndirectedGraph) AddEdge(from, to int) {
 	udg.eCount++
 }
 
-func (udg *UndirectedGraph) GetV() int {
+func (udg *UdGraph) GetV() int {
 	return udg.vCount
 }
 
-func (udg *UndirectedGraph) GetE() int {
+func (udg *UdGraph) GetE() int {
 	return udg.eCount
 }
 
-func (udg *UndirectedGraph) Adj(vID int) []int {
-	adj := make([]int, len(udg.adj[vID].Items))
-	for k, v := range udg.adj[vID].Items {
+func (udg *UdGraph) Adj(vID int) []int {
+	adj := make([]int, len(udg.adj[vID].Items()))
+	for k, v := range udg.adj[vID].Items() {
 		adj[k] = v.(int)
 	}
 	return adj

@@ -11,7 +11,7 @@ type Cycle struct {
 	hasCycle bool
 }
 
-func NewCycle(udg *dgraph.UndirectedGraph) *Cycle {
+func NewCycle(udg *dgraph.UdGraph) *Cycle {
 	cycle := &Cycle{
 		mark: make([]bool, udg.GetV()),
 	}
@@ -29,7 +29,7 @@ func (c *Cycle) HasCycle() bool {
 }
 
 //algorithms/graph/UndirectedDfsRecursion is not fit,implement cycle's dfs
-func (c *Cycle) dfs(udg *dgraph.UndirectedGraph, vertex, pvertex int) {
+func (c *Cycle) dfs(udg *dgraph.UdGraph, vertex, pvertex int) {
 	c.mark[vertex] = true
 	for _, v := range udg.Adj(vertex) {
 		if !c.mark[v] {

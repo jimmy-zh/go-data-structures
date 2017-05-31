@@ -14,7 +14,7 @@ type Path struct {
 	sID    int
 }
 
-func NewPath(udg *dgraph.UndirectedGraph, sID int) *Path {
+func NewPath(udg *dgraph.UdGraph, sID int) *Path {
 	path := &Path{
 		mark:   make([]bool, udg.GetV()),
 		record: make([]int, udg.GetV()),

@@ -5,7 +5,7 @@ import (
 	"data-structures/queue"
 )
 
-func UndirectedBfsIteration(udg *graph.UndirectedGraph, vertex, pvertex int, processed func(int) bool, process func(int, int)) {
+func UndirectedBfsIteration(udg *graph.UdGraph, vertex, pvertex int, processed func(int) bool, process func(int, int)) {
 	process(vertex, pvertex)
 	q := queue.NewQueueLinkedList()
 	q.Enqueue(vertex)

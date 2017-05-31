@@ -5,7 +5,7 @@ import (
 	"data-structures/stack"
 )
 
-func UndirectedDfsRecursion(udg *graph.UndirectedGraph, vertex, pvertex int, processed func(int) bool, process func(int, int)) {
+func UndirectedDfsRecursion(udg *graph.UdGraph, vertex, pvertex int, processed func(int) bool, process func(int, int)) {
 	process(vertex, pvertex)
 	for _, v := range udg.Adj(vertex) {
 		if !processed(v) {
@@ -14,7 +14,7 @@ func UndirectedDfsRecursion(udg *graph.UndirectedGraph, vertex, pvertex int, pro
 	}
 }
 
-func UndirectedDfsIteration(udg *graph.UndirectedGraph, vertex, pvertex int, processed func(int) bool, process func(int, int)) {
+func UndirectedDfsIteration(udg *graph.UdGraph, vertex, pvertex int, processed func(int) bool, process func(int, int)) {
 	process(vertex, pvertex)
 	s := stack.NewStackLinkedList()
 	s.Push(vertex)

@@ -10,7 +10,7 @@ type TwoColor struct {
 
 //TwoColor focuses on whether the graph is bipartite(two-colorable) or not
 
-func NewTwoColor(udg *graph.UndirectedGraph) *TwoColor {
+func NewTwoColor(udg *graph.UdGraph) *TwoColor {
 	tc := &TwoColor{
 		mark:      make([]bool, udg.GetV()),
 		color:     make([]bool, udg.GetV()),
@@ -31,7 +31,7 @@ func (tc *TwoColor) Bipartite() bool {
 }
 
 //algorithms/graph/UndirectedDfsRecursion is not fit,implement TwoColor's dfs
-func (tc *TwoColor) dfs(udg *graph.UndirectedGraph, vertex int) {
+func (tc *TwoColor) dfs(udg *graph.UdGraph, vertex int) {
 	tc.mark[vertex] = true
 	for _, v := range udg.Adj(vertex) {
 		if !tc.mark[v] {

@@ -14,7 +14,7 @@ type ShortestPath struct {
 	sID    int
 }
 
-func NewShortestPath(udg *dgraph.UndirectedGraph, sID int) *ShortestPath {
+func NewShortestPath(udg *dgraph.UdGraph, sID int) *ShortestPath {
 	sp := &ShortestPath{
 		mark:   make([]bool, udg.GetV()),
 		record: make([]int, udg.GetV()),

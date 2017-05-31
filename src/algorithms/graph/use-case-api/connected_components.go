@@ -13,7 +13,7 @@ type CC struct {
 	count int //count of cc in the graph
 }
 
-func NewCC(udg *dgraph.UndirectedGraph) *CC {
+func NewCC(udg *dgraph.UdGraph) *CC {
 	cc := &CC{
 		mark: make([]bool, udg.GetV()),
 		id:   make([]int, udg.GetV()),

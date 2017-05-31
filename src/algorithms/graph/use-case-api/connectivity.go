@@ -12,7 +12,7 @@ type Connectivity struct {
 	count int
 }
 
-func NewConnectivity(udg *dgraph.UndirectedGraph, vertex int) *Connectivity {
+func NewConnectivity(udg *dgraph.UdGraph, vertex int) *Connectivity {
 	connectivity := &Connectivity{
 		mark: make([]bool, udg.GetV()),
 	}
