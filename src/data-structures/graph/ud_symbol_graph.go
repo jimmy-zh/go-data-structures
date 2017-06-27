@@ -4,6 +4,9 @@ import (
 	"os"
 	"bufio"
 	"strings"
+	"errors"
+	"io"
+	"fmt"
 )
 
 type UdSymbolGraph struct {
@@ -12,15 +15,16 @@ type UdSymbolGraph struct {
 	keys []string
 }
 
-func NewUdSymbolGraph(stream string, split string) *UdSymbolGraph {
-	udsg := &UdSymbolGraph{
+func NewUdSymbolGraph(stream string, split string) (udsg *UdSymbolGraph, err error) {
+	udsg = &UdSymbolGraph{
 		st:   make(map[string]int),
 		keys: make([]string, 0),
 	}
 
 	fd, err := os.OpenFile(stream, os.O_RDONLY, 0)
 	if err != nil {
-		return nil
+		err = errors.New(fmt.Sprintf("open file error:%s\n", err.Error()))
+		return
 	}
 	defer fd.Close()
 
@@ -28,8 +32,10 @@ func NewUdSymbolGraph(stream string, split string) *UdSymbolGraph {
 	for {
 		line, err := rd.ReadString('\n')
 		if err != nil {
-			//read over
-			break
+			if err == io.EOF {
+				break
+			}
+			return nil, errors.New("read error")
 		}
 		edges := strings.Split(line, split)
 		for _, edge := range edges {
@@ -48,15 +54,17 @@ func NewUdSymbolGraph(stream string, split string) *UdSymbolGraph {
 	for {
 		line, err := rd.ReadString('\n')
 		if err != nil {
-			//read over
-			break
+			if err == io.EOF {
+				break
+			}
+			return nil, errors.New("read error")
 		}
 		edges := strings.Split(line, split)
 		for i := 1; i < len(edges); i++ {
 			udsg.udg.AddEdge(udsg.st[edges[0]], udsg.st[edges[i]])
 		}
 	}
-	return udsg
+	return
 }
 
 func (udsg *UdSymbolGraph) Contains(edge string) bool {

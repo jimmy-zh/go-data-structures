@@ -1,7 +1,7 @@
 package stack
 
 import (
-	"../container"
+	"data-structures/container"
 )
 
 type Stacker interface {
