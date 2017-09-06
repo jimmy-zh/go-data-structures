@@ -1,11 +1,11 @@
 package symbol_table
 
 type STLinkedList struct {
-	root *Node
+	root *node
 }
 
-type Node struct {
-	next  *Node
+type node struct {
+	next  *node
 	key   interface{}
 	value interface{}
 }
@@ -21,7 +21,7 @@ func (stll *STLinkedList) Put(key, value interface{}) {
 			return
 		}
 	}
-	stll.root = &Node{
+	stll.root = &node{
 		next:  stll.root,
 		key:   key,
 		value: value,
