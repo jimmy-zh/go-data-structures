@@ -1,27 +1,25 @@
 package binary
 
 type Comparabler interface {
-	Len() int
-	Less(i int, t interface{}) bool
-	More(i int, t interface{}) bool
+	Less(item interface{}) bool
+	More(item interface{}) bool
 }
 
-func Search(arr Comparabler, item interface{}) int {
-	if arr.Len() == 0 {
+func Search(arr []Comparabler, item Comparabler) int {
+	if len(arr) == 0 {
 		return 0
 	}
-
-	return searchRecursive(arr, item, 0, arr.Len()-1)
+	return searchRecursive(arr, item, 0, len(arr)-1)
 }
 
-func searchRecursive(arr Comparabler, item interface{}, lo, hi int) int {
+func searchRecursive(arr []Comparabler, item Comparabler, lo, hi int) int {
 	if lo > hi {
 		return lo
 	}
 	m := (lo + hi) / 2
-	if arr.Less(m, item) {
+	if arr[m].Less(item) {
 		return searchRecursive(arr, item, m+1, hi)
-	} else if arr.More(m, item) {
+	} else if arr[m].More(item) {
 		return searchRecursive(arr, item, lo, m-1)
 	} else {
 		return m
