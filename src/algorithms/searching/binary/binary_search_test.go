@@ -2,39 +2,35 @@ package binary
 
 import "testing"
 
-type ColInt []int
+type Int int
 
-func (ci ColInt) Len() int {
-	return len(ci)
+func (i Int) Less(item interface{}) bool {
+	return i < item.(Int)
 }
 
-func (ci ColInt) Less(i int, t interface{}) bool {
-	return ci[i] < t.(int)
+func (i Int) More(item interface{}) bool {
+	return i > item.(Int)
 }
 
-func (ci ColInt) More(i int, t interface{}) bool {
-	return ci[i] > t.(int)
-}
-
-var collection = ColInt{2, 5, 7, 34, 111, 333}
+var collection = []Comparabler{Int(2), Int(5), Int(7), Int(34), Int(111), Int(333)}
 
 func TestSearch(t *testing.T) {
-	if Search(collection, 1) != 0 {
+	if Search(collection, Int(1)) != 0 {
 		t.Error("search error")
 	}
-	if Search(collection, 2) != 0 {
-		t.Error("search error")
-	}
-
-	if Search(collection, 5) != 1 {
+	if Search(collection, Int(2)) != 0 {
 		t.Error("search error")
 	}
 
-	if Search(collection, 333) != 5 {
+	if Search(collection, Int(5)) != 1 {
 		t.Error("search error")
 	}
 
-	if Search(collection, 12344) != 6 {
+	if Search(collection, Int(333)) != 5 {
+		t.Error("search error")
+	}
+
+	if Search(collection, Int(12344)) != 6 {
 		t.Error("search error")
 	}
 }
