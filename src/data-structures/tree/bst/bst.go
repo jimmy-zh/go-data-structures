@@ -3,10 +3,10 @@ package bst
 import "algorithms/searching/binary"
 
 type Node struct {
-	left, right *Node
-	Key         binary.Comparabler
-	Value       interface{}
 	N           int //nodes in subtree rooted here
+	Value       interface{}
+	Key         binary.Comparabler
+	left, right *Node
 }
 
 func (n *Node) Size() int {
@@ -22,6 +22,10 @@ type BST struct {
 
 func NewBST() *BST {
 	return new(BST)
+}
+
+func (bst *BST) Size() int {
+	return bst.root.Size()
 }
 
 func (bst *BST) Search(key binary.Comparabler) *Node {
@@ -61,10 +65,6 @@ func (bst *BST) insertRecurse(node *Node, key binary.Comparabler, value interfac
 		node.N = node.left.Size() + node.right.Size() + 1
 	}
 	return node
-}
-
-func (bst *BST) Size() int {
-	return bst.root.Size()
 }
 
 func (bst *BST) Min() *Node {
@@ -132,9 +132,30 @@ func (bst *BST) ceilingRecurse(node *Node, key binary.Comparabler) *Node {
 		} else {
 			return n
 		}
-
 	case key.More(node.Key):
 		return bst.ceilingRecurse(node.right, key)
+	default:
+		return node
+	}
+}
+
+func (bst *BST) Select(k int) *Node {
+	if k < 0 || k >= bst.Size() {
+		return nil
+	}
+	return bst.selectRecurse(bst.root, k)
+}
+
+func (bst *BST) selectRecurse(node *Node, k int) *Node {
+	if node == nil {
+		return nil
+	}
+	s := node.left.Size()
+	switch {
+	case k < s:
+		return bst.selectRecurse(node.left, k)
+	case k > s:
+		return bst.selectRecurse(node.right, k-s-1)
 	default:
 		return node
 	}
