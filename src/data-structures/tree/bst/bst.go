@@ -3,10 +3,11 @@ package bst
 import "algorithms/searching/binary"
 
 type Node struct {
-	N           int //nodes in subtree rooted here
-	Value       interface{}
-	Key         binary.Comparabler
-	left, right *Node
+	Key   binary.Comparabler
+	Value interface{}
+	left  *Node
+	right *Node
+	N     int //nodes in subtree rooted here
 }
 
 func (n *Node) Size() int {
@@ -22,10 +23,6 @@ type BST struct {
 
 func NewBST() *BST {
 	return new(BST)
-}
-
-func (bst *BST) Size() int {
-	return bst.root.Size()
 }
 
 func (bst *BST) Search(key binary.Comparabler) *Node {
@@ -67,18 +64,37 @@ func (bst *BST) insertRecurse(node *Node, key binary.Comparabler, value interfac
 	return node
 }
 
-func (bst *BST) Min() *Node {
-	if bst.Size() == 0 {
-		return nil
-	}
-	return bst.minRecurse(bst.root)
+func (bst *BST) Remove(key binary.Comparabler) {
+	bst.root = bst.removeRecurse(bst.root, key)
 }
 
-func (bst *BST) minRecurse(node *Node) *Node {
-	if node.left == nil {
-		return node
+func (bst *BST) removeRecurse(node *Node, key binary.Comparabler) *Node {
+	if node == nil {
+		return nil
 	}
-	return bst.minRecurse(node.left)
+	switch {
+	case key.More(node.Key):
+		node.right = bst.removeRecurse(node.right, key)
+	case key.Less(node.Key):
+		node.left = bst.removeRecurse(node.left, key)
+	default:
+		if node.left == nil {
+			return node.right
+		}
+		if node.right == nil {
+			return node.left
+		}
+		t := node
+		node = bst.minRecurse(t.right)
+		node.right = bst.deleteMin(t.right)
+		node.left = t.left
+	}
+	node.N = node.left.Size() + node.right.Size() + 1
+	return node
+}
+
+func (bst *BST) Size() int {
+	return bst.root.Size()
 }
 
 func (bst *BST) Max() *Node {
@@ -93,6 +109,52 @@ func (bst *BST) maxRecurse(node *Node) *Node {
 		return node
 	}
 	return bst.maxRecurse(node.right)
+}
+
+func (bst *BST) Min() *Node {
+	if bst.Size() == 0 {
+		return nil
+	}
+	return bst.minRecurse(bst.root)
+}
+
+func (bst *BST) minRecurse(node *Node) *Node {
+	if node.left == nil {
+		return node
+	}
+	return bst.minRecurse(node.left)
+}
+
+func (bst *BST) DeleteMax() {
+	bst.root = bst.deleteMaxRecurse(bst.root)
+}
+
+func (bst *BST) deleteMaxRecurse(node *Node) *Node {
+	if node == nil {
+		return nil
+	}
+	if node.right == nil {
+		return node.left
+	}
+	node.right = bst.deleteMaxRecurse(node.right)
+	node.N = node.left.Size() + node.right.Size() + 1
+	return node
+}
+
+func (bst *BST) DeleteMin() {
+	bst.root = bst.deleteMin(bst.root)
+}
+
+func (bst *BST) deleteMin(node *Node) *Node {
+	if node == nil {
+		return nil
+	}
+	if node.left == nil {
+		return node.right
+	}
+	node.left = bst.deleteMin(node.left)
+	node.N = node.left.Size() + node.right.Size() + 1
+	return node
 }
 
 func (bst *BST) Floor(key binary.Comparabler) *Node {
@@ -136,6 +198,24 @@ func (bst *BST) ceilingRecurse(node *Node, key binary.Comparabler) *Node {
 		return bst.ceilingRecurse(node.right, key)
 	default:
 		return node
+	}
+}
+
+func (bst *BST) Rank(key binary.Comparabler) int {
+	return bst.rankRecurse(bst.root, key)
+}
+
+func (bst *BST) rankRecurse(node *Node, key binary.Comparabler) int {
+	if node == nil {
+		return 0
+	}
+	switch {
+	case key.More(node.Key):
+		return bst.rankRecurse(node.right, key) + node.left.Size() + 1
+	case key.Less(node.Key):
+		return bst.rankRecurse(node.left, key)
+	default:
+		return node.left.Size()
 	}
 }
 

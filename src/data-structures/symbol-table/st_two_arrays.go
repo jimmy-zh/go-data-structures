@@ -76,6 +76,22 @@ func (stta *STTwoArrays) Min() binary.Comparabler {
 	return stta.keys[0]
 }
 
+func (stta *STTwoArrays) DeleteMax() {
+	if stta.n != 0 {
+		stta.keys = stta.keys[:stta.n-1]
+		stta.values = stta.values[:stta.n-1]
+		stta.n--
+	}
+}
+
+func (stta *STTwoArrays) DeleteMin() {
+	if stta.n != 0 {
+		stta.keys = stta.keys[1:]
+		stta.values = stta.values[1:]
+		stta.n--
+	}
+}
+
 func (stta *STTwoArrays) Floor(key binary.Comparabler) binary.Comparabler {
 	index := stta.Rank(key)
 	if index < stta.n && stta.keys[index] == key {

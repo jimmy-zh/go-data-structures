@@ -58,6 +58,14 @@ func (stb *STBST) Min() binary.Comparabler {
 	return nil
 }
 
+func (stb *STBST) DeleteMax() {
+	stb.bst.DeleteMax()
+}
+
+func (stb *STBST) DeleteMin() {
+	stb.bst.DeleteMin()
+}
+
 func (stb *STBST) Floor(key binary.Comparabler) binary.Comparabler {
 	if n := stb.bst.Floor(key); n != nil {
 		return n.Key
@@ -72,9 +80,9 @@ func (stb *STBST) Ceiling(key binary.Comparabler) binary.Comparabler {
 	return nil
 }
 
-//func (stb *STBST) Rank(key binary.Comparabler) int {
-
-//}
+func (stb *STBST) Rank(key binary.Comparabler) int {
+	return stb.bst.Rank(key)
+}
 
 func (stb *STBST) Select(k int) binary.Comparabler {
 	if n := stb.bst.Select(k); n != nil {
