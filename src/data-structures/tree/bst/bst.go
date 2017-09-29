@@ -1,9 +1,11 @@
 package bst
 
-import "algorithms/searching/binary"
+import (
+	"utils"
+)
 
 type Node struct {
-	Key   binary.Comparabler
+	Key   utils.Comparabler
 	Value interface{}
 	left  *Node
 	right *Node
@@ -25,11 +27,11 @@ func NewBST() *BST {
 	return new(BST)
 }
 
-func (bst *BST) Search(key binary.Comparabler) *Node {
+func (bst *BST) Search(key utils.Comparabler) *Node {
 	return bst.searchRecurse(bst.root, key)
 }
 
-func (bst *BST) searchRecurse(node *Node, key binary.Comparabler) *Node {
+func (bst *BST) searchRecurse(node *Node, key utils.Comparabler) *Node {
 	if node == nil {
 		return nil
 	}
@@ -43,11 +45,11 @@ func (bst *BST) searchRecurse(node *Node, key binary.Comparabler) *Node {
 	}
 }
 
-func (bst *BST) Insert(key binary.Comparabler, value interface{}) {
+func (bst *BST) Insert(key utils.Comparabler, value interface{}) {
 	bst.root = bst.insertRecurse(bst.root, key, value)
 }
 
-func (bst *BST) insertRecurse(node *Node, key binary.Comparabler, value interface{}) *Node {
+func (bst *BST) insertRecurse(node *Node, key utils.Comparabler, value interface{}) *Node {
 	if node == nil {
 		node = &Node{Key: key, Value: value, N: 1}
 	} else {
@@ -64,11 +66,11 @@ func (bst *BST) insertRecurse(node *Node, key binary.Comparabler, value interfac
 	return node
 }
 
-func (bst *BST) Remove(key binary.Comparabler) {
+func (bst *BST) Remove(key utils.Comparabler) {
 	bst.root = bst.removeRecurse(bst.root, key)
 }
 
-func (bst *BST) removeRecurse(node *Node, key binary.Comparabler) *Node {
+func (bst *BST) removeRecurse(node *Node, key utils.Comparabler) *Node {
 	if node == nil {
 		return nil
 	}
@@ -86,7 +88,7 @@ func (bst *BST) removeRecurse(node *Node, key binary.Comparabler) *Node {
 		}
 		t := node
 		node = bst.minRecurse(t.right)
-		node.right = bst.deleteMin(t.right)
+		node.right = bst.removeMinRecurse(t.right)
 		node.left = t.left
 	}
 	node.N = node.left.Size() + node.right.Size() + 1
@@ -125,43 +127,43 @@ func (bst *BST) minRecurse(node *Node) *Node {
 	return bst.minRecurse(node.left)
 }
 
-func (bst *BST) DeleteMax() {
-	bst.root = bst.deleteMaxRecurse(bst.root)
+func (bst *BST) RemoveMax() {
+	bst.root = bst.removeMaxRecurse(bst.root)
 }
 
-func (bst *BST) deleteMaxRecurse(node *Node) *Node {
+func (bst *BST) removeMaxRecurse(node *Node) *Node {
 	if node == nil {
 		return nil
 	}
 	if node.right == nil {
 		return node.left
 	}
-	node.right = bst.deleteMaxRecurse(node.right)
+	node.right = bst.removeMaxRecurse(node.right)
 	node.N = node.left.Size() + node.right.Size() + 1
 	return node
 }
 
-func (bst *BST) DeleteMin() {
-	bst.root = bst.deleteMin(bst.root)
+func (bst *BST) RemoveMin() {
+	bst.root = bst.removeMinRecurse(bst.root)
 }
 
-func (bst *BST) deleteMin(node *Node) *Node {
+func (bst *BST) removeMinRecurse(node *Node) *Node {
 	if node == nil {
 		return nil
 	}
 	if node.left == nil {
 		return node.right
 	}
-	node.left = bst.deleteMin(node.left)
+	node.left = bst.removeMinRecurse(node.left)
 	node.N = node.left.Size() + node.right.Size() + 1
 	return node
 }
 
-func (bst *BST) Floor(key binary.Comparabler) *Node {
+func (bst *BST) Floor(key utils.Comparabler) *Node {
 	return bst.floorRecurse(bst.root, key)
 }
 
-func (bst *BST) floorRecurse(node *Node, key binary.Comparabler) *Node {
+func (bst *BST) floorRecurse(node *Node, key utils.Comparabler) *Node {
 	if node == nil {
 		return nil
 	}
@@ -179,11 +181,11 @@ func (bst *BST) floorRecurse(node *Node, key binary.Comparabler) *Node {
 	}
 }
 
-func (bst *BST) Ceiling(key binary.Comparabler) *Node {
+func (bst *BST) Ceiling(key utils.Comparabler) *Node {
 	return bst.ceilingRecurse(bst.root, key)
 }
 
-func (bst *BST) ceilingRecurse(node *Node, key binary.Comparabler) *Node {
+func (bst *BST) ceilingRecurse(node *Node, key utils.Comparabler) *Node {
 	if node == nil {
 		return nil
 	}
@@ -201,11 +203,11 @@ func (bst *BST) ceilingRecurse(node *Node, key binary.Comparabler) *Node {
 	}
 }
 
-func (bst *BST) Rank(key binary.Comparabler) int {
+func (bst *BST) Rank(key utils.Comparabler) int {
 	return bst.rankRecurse(bst.root, key)
 }
 
-func (bst *BST) rankRecurse(node *Node, key binary.Comparabler) int {
+func (bst *BST) rankRecurse(node *Node, key utils.Comparabler) int {
 	if node == nil {
 		return 0
 	}

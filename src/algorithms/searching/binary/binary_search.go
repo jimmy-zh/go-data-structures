@@ -1,18 +1,17 @@
 package binary
 
-type Comparabler interface {
-	Less(item interface{}) bool
-	More(item interface{}) bool
-}
+import (
+	"utils"
+)
 
-func Search(arr []Comparabler, item Comparabler) int {
+func Search(arr []utils.Comparabler, item utils.Comparabler) int {
 	if len(arr) == 0 {
 		return 0
 	}
 	return searchRecursive(arr, item, 0, len(arr)-1)
 }
 
-func searchRecursive(arr []Comparabler, item Comparabler, lo, hi int) int {
+func searchRecursive(arr []utils.Comparabler, item utils.Comparabler, lo, hi int) int {
 	if lo > hi {
 		return lo
 	}

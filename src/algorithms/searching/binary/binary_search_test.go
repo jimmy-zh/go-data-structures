@@ -1,6 +1,9 @@
 package binary
 
-import "testing"
+import(
+	"testing"
+	"utils"
+)
 
 type Int int
 
@@ -12,7 +15,7 @@ func (i Int) More(item interface{}) bool {
 	return i > item.(Int)
 }
 
-var collection = []Comparabler{Int(2), Int(5), Int(7), Int(34), Int(111), Int(333)}
+var collection = []utils.Comparabler{Int(2), Int(5), Int(7), Int(34), Int(111), Int(333)}
 
 func TestSearch(t *testing.T) {
 	if Search(collection, Int(1)) != 0 {
