@@ -14,13 +14,13 @@ type SymbolTabler interface {
 
 type SymbolTableSuper interface {
 	SymbolTabler
-	Contains(key utils.Comparabler) bool              //Does this symbol table contain the given key?
-	Max() utils.Comparabler                           //Returns the largest key in this symbol table.
-	Min() utils.Comparabler                           //Returns the smallest key in this symbol table.
-	DeleteMax()                                        //Removes the largest key and associated value from this symbol table
-	DeleteMin()                                        //Removes the smallest key and associated value from this symbol table
+	Contains(key utils.Comparabler) bool             //Does this symbol table contain the given key?
+	Max() utils.Comparabler                          //Returns the largest key in this symbol table.
+	Min() utils.Comparabler                          //Returns the smallest key in this symbol table.
+	DeleteMax()                                      //Removes the largest key and associated value from this symbol table
+	DeleteMin()                                      //Removes the smallest key and associated value from this symbol table
 	Floor(key utils.Comparabler) utils.Comparabler   //Returns the largest key in this symbol table less than or equal to {@code key}.
 	Ceiling(key utils.Comparabler) utils.Comparabler //Returns the smallest key in this symbol table greater than or equal to {@code key}.
-	Rank(key utils.Comparabler) int                   //Returns the number of keys in this symbol table strictly less than {@code key}.
-	Select(k int) utils.Comparabler                   //Return the kth smallest key in this symbol table
+	Rank(key utils.Comparabler) int                  //Returns the number of keys in this symbol table strictly less than {@code key}.
+	Select(k int) utils.Comparabler                  //Return the kth smallest key in this symbol table
 }
