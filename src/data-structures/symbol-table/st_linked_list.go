@@ -1,7 +1,5 @@
 package symbol_table
 
-//var _ SymbolTabler = (*STLinkedList)(nil)
-
 type STLinkedList struct {
 	root *node
 	n    int

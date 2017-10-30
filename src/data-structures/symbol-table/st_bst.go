@@ -5,6 +5,8 @@ import (
 	"utils"
 )
 
+var _ SymbolTableSuper = (*STBST)(nil)
+
 type STBST struct {
 	bst *bst.BST
 }

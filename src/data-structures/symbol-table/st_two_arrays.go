@@ -1,9 +1,11 @@
 package symbol_table
 
 import (
-	"utils"
 	"algorithms/searching/binary"
+	"utils"
 )
+
+var _ SymbolTableSuper = (*STTwoArrays)(nil)
 
 type STTwoArrays struct {
 	keys   []utils.Comparabler
