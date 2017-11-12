@@ -1,71 +1,46 @@
 package quick
 
+import (
+	"algorithms/sorting/insertion"
+)
+
 const CUTOFF = 8
 
 func Sort(arr []int) {
-	if arr == nil || len(arr) < 2 {
-		return
-	}
-
-	lo := 0
-	hi := len(arr) - 1
-	sort(arr, lo, hi)
+	sort(arr, 0, len(arr)-1)
 }
 
 func sort(arr []int, lo, hi int) {
 	if lo >= hi {
 		return
 	}
-
-	//median-of-3 for partitioning
 	n := hi - lo + 1
-	if n > CUTOFF {
-		m := median3(arr, lo, hi, lo+n/2)
-		arr[lo], arr[m] = arr[m], arr[lo]
+	if n <= CUTOFF {
+		insertion.Sort(arr[lo : hi+1])
+		return
 	}
-	p := partition(arr, lo, hi)
-	sort(arr, lo, p-1)
-	sort(arr, p+1, hi)
-}
+	m := Median3(arr, lo, lo+n/2, hi)
+	arr[lo], arr[m] = arr[m], arr[lo]
 
-func median3(arr []int, i, j, k int) int {
-	if arr[i] < arr[j] {
-		if arr[j] < arr[k] {
-			return j
-		} else {
-			if arr[i] < arr[k] {
-				return k
-			} else {
-				return i
-			}
-		}
-	} else {
-		if arr[j] > arr[k] {
-			return j
-		} else {
-			if arr[i] > arr[k] {
-				return k
-			} else {
-				return i
-			}
-		}
-	}
+	i := partition(arr, lo, hi)
+	sort(arr, lo, i-1)
+	sort(arr, i+1, hi)
 }
 
 func partition(arr []int, lo, hi int) int {
-	compare := arr[lo]
+	pivot := arr[lo]
 	i := lo
 	j := hi + 1
 	for {
 		for {
 			i++
-			if i > hi || arr[i] >= compare {
+			if arr[i] >= pivot || i == hi {
 				break
 			}
 		}
 		for {
 			j--
-			if j <= lo || arr[j] <= compare {
+			if arr[j] <= pivot || j == lo {
 				break
 			}
 		}
@@ -75,5 +50,24 @@ func partition(arr []int, lo, hi int) int {
 		arr[i], arr[j] = arr[j], arr[i]
 	}
 	arr[lo], arr[j] = arr[j], arr[lo]
+	return j
+}
+
+func Median3(arr []int, i, j, k int) int {
+	if arr[i] < arr[j] {
+		if arr[j] < arr[k] {
+			return j
+		}
+		if arr[i] < arr[k] {
+			return k
+		}
+		return i
+	}
+	if arr[i] < arr[k] {
+		return i
+	}
+	if arr[j] < arr[k] {
+		return k
+	}
 	return j
 }
