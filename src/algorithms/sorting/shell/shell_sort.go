@@ -1,12 +1,13 @@
 package shell
 
 func Sort(arr []int) {
-	if arr == nil || len(arr) < 2 {
+	if len(arr) < 2 {
 		return
 	}
+	n := len(arr)
 	h := 1
 	//find proper increment sequence
-	for h < len(arr)/3 {
+	for h < n/3 {
 		h = h*3 + 1
 	}
 	for h >= 1 {
