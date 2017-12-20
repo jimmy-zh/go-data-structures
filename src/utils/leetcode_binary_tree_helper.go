@@ -7,7 +7,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func binaryTreeConstructor(vals []interface{}) *TreeNode {
+func BinaryTreeConstructor(vals []interface{}) *TreeNode {
 	if len(vals) == 0 {
 		return nil
 	}
@@ -53,7 +53,7 @@ func binaryTreeConstructor(vals []interface{}) *TreeNode {
 	return nodes[0]
 }
 
-func binaryTreeEqual(t1, t2 *TreeNode) bool {
+func BinaryTreeEqual(t1, t2 *TreeNode) bool {
 	if t1 == nil {
 		if t2 == nil {
 			return true
@@ -65,10 +65,10 @@ func binaryTreeEqual(t1, t2 *TreeNode) bool {
 	} else if t1.Val != t2.Val {
 		return false
 	}
-	if !binaryTreeEqual(t1.Left, t2.Left) {
+	if !BinaryTreeEqual(t1.Left, t2.Left) {
 		return false
 	}
-	if !binaryTreeEqual(t1.Right, t2.Right) {
+	if !BinaryTreeEqual(t1.Right, t2.Right) {
 		return false
 	}
 	return true
