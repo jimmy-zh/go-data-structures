@@ -54,21 +54,16 @@ func BinaryTreeConstructor(vals []interface{}) *TreeNode {
 }
 
 func BinaryTreeEqual(t1, t2 *TreeNode) bool {
-	if t1 == nil {
-		if t2 == nil {
-			return true
-		}
+	if t1 == nil && t2 == nil {
+		return true
+	}
+	if (t1 == nil && t2 != nil) || (t1 != nil && t2 == nil) {
 		return false
 	}
-	if t2 == nil {
-		return false
-	} else if t1.Val != t2.Val {
+	if t1.Val != t2.Val {
 		return false
 	}
-	if !BinaryTreeEqual(t1.Left, t2.Left) {
-		return false
-	}
-	if !BinaryTreeEqual(t1.Right, t2.Right) {
+	if !BinaryTreeEqual(t1.Left, t2.Left) || !BinaryTreeEqual(t1.Right, t2.Right) {
 		return false
 	}
 	return true
