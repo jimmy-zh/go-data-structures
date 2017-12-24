@@ -2,6 +2,7 @@ package bubble
 
 import (
 	"testing"
+
 	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 

@@ -1,8 +1,8 @@
 package use_case_api
 
 import (
-	dgraph "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
 	agraph "github.com/midnight-vivian/go-data-structures/src/algorithms/graph"
+	dgraph "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
 )
 
 //Connectivity focuses on the connectivity between the source vertex and the target vertex

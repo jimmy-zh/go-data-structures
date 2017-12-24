@@ -2,6 +2,7 @@ package selection
 
 import (
 	"testing"
+
 	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 

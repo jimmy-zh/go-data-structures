@@ -1,8 +1,8 @@
 package use_case_api
 
 import (
-	dgraph "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
 	agraph "github.com/midnight-vivian/go-data-structures/src/algorithms/graph"
+	dgraph "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
 	"github.com/midnight-vivian/go-data-structures/src/data-structures/stack"
 )
 
@@ -28,7 +28,7 @@ func (p *Path) HasPath(v int) bool {
 	return p.mark[v]
 }
 
-func (p *Path) Path(v int) (*stack.StackLinkedList) {
+func (p *Path) Path(v int) *stack.StackLinkedList {
 	s := stack.NewStackLinkedList()
 	for i := v; i != p.sID; i = p.record[i] {
 		s.Push(i)

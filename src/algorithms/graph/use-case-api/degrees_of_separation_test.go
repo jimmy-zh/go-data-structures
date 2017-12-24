@@ -1,8 +1,9 @@
 package use_case_api
 
 import (
-	"testing"
 	"os"
+	"testing"
+
 	"github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
 )
 
