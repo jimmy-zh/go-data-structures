@@ -1,6 +1,6 @@
 package graph
 
-import "data-structures/bag"
+import "github.com/midnight-vivian/go-data-structures/src/data-structures/bag"
 
 type UdGraph struct {
 	adj    []*bag.Bag

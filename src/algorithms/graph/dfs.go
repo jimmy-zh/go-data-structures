@@ -1,8 +1,8 @@
 package graph
 
 import (
-	"data-structures/graph"
-	"data-structures/stack"
+	"github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
+	"github.com/midnight-vivian/go-data-structures/src/data-structures/stack"
 )
 
 func UndirectedDfsRecursion(udg *graph.UdGraph, vertex, pvertex int, processed func(int) bool, process func(int, int)) {

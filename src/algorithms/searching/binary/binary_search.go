@@ -1,7 +1,7 @@
 package binary
 
 import (
-	"utils"
+	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 
 func Search(arr []utils.Comparabler, item utils.Comparabler) int {

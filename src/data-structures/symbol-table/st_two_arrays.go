@@ -1,8 +1,8 @@
 package symbol_table
 
 import (
-	"algorithms/searching/binary"
-	"utils"
+	"github.com/midnight-vivian/go-data-structures/src/algorithms/searching/binary"
+	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 
 var _ SymbolTableSuper = (*STTwoArrays)(nil)

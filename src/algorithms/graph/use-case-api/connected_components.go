@@ -1,8 +1,9 @@
 package use_case_api
 
 import (
-	dgraph "data-structures/graph"
-	agraph "algorithms/graph"
+	agraph "github.com/midnight-vivian/go-data-structures/src/algorithms/graph"
+
+	dgraph "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
 )
 
 //CC focuses on the connected components in a graph

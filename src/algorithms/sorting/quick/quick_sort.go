@@ -1,7 +1,7 @@
 package quick
 
 import (
-	"algorithms/sorting/insertion"
+	"github.com/midnight-vivian/go-data-structures/src/algorithms/sorting/insertion"
 )
 
 const CUTOFF = 8

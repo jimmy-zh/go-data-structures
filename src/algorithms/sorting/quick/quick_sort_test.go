@@ -2,7 +2,7 @@ package quick
 
 import (
 	"testing"
-	"utils"
+	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 
 func TestCutOffToInsertionSort(t *testing.T) {

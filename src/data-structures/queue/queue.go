@@ -1,6 +1,6 @@
 package queue
 
-import "data-structures/container"
+import "github.com/midnight-vivian/go-data-structures/src/data-structures/container"
 
 type Queuer interface {
 	Enqueue(v interface{})

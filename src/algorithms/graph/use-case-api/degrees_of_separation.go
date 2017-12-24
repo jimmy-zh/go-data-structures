@@ -2,7 +2,7 @@ package use_case_api
 
 import (
 	"fmt"
-	dgraph "data-structures/graph"
+	dgraph "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
 )
 
 type DegreesOfSeparation struct {

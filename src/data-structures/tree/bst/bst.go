@@ -1,7 +1,7 @@
 package bst
 
 import (
-	"utils"
+	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 
 type Node struct {

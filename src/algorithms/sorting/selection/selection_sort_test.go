@@ -2,7 +2,7 @@ package selection
 
 import (
 	"testing"
-	"utils"
+	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 
 func TestSort(t *testing.T) {

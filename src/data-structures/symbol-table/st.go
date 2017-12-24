@@ -1,8 +1,8 @@
 package symbol_table
 
 import (
-	"data-structures/container"
-	"utils"
+	"github.com/midnight-vivian/go-data-structures/src/data-structures/container"
+	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 
 type SymbolTabler interface {

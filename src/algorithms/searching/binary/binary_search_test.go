@@ -1,8 +1,9 @@
 package binary
 
-import(
+import (
 	"testing"
-	"utils"
+
+	"github.com/midnight-vivian/go-data-structures/src/utils"
 )
 
 type Int int
