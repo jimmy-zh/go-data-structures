@@ -1,6 +1,4 @@
-#idea
 .idea/
-#golang
-src/main/
 pkg/
 bin/
+main/
