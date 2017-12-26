@@ -1,9 +1,9 @@
 package use_case_api
 
 import (
-	agraph "github.com/midnight-vivian/go-data-structures/src/algorithms/graph"
-	dgraph "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
-	"github.com/midnight-vivian/go-data-structures/src/data-structures/stack"
+	agraph "github.com/midnight-vivian/go-data-structures/algorithms/graph"
+	dgraph "github.com/midnight-vivian/go-data-structures/data-structures/graph"
+	"github.com/midnight-vivian/go-data-structures/data-structures/stack"
 )
 
 //ShortestPath focuses on the shortest path from the source vertex to the target vertex

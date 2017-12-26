@@ -1,6 +1,6 @@
 package use_case_api
 
-import "github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
+import "github.com/midnight-vivian/go-data-structures/data-structures/graph"
 
 type TwoColor struct {
 	mark      []bool

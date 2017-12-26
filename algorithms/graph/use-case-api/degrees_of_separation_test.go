@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/midnight-vivian/go-data-structures/src/data-structures/graph"
+	"github.com/midnight-vivian/go-data-structures/data-structures/graph"
 )
 
 //testing fails now,to be completed

@@ -1,7 +1,7 @@
 package stack
 
 import (
-	"github.com/midnight-vivian/go-data-structures/src/data-structures/container"
+	"github.com/midnight-vivian/go-data-structures/data-structures/container"
 )
 
 type Stacker interface {

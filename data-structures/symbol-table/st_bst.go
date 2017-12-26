@@ -1,9 +1,9 @@
 package symbol_table
 
 import (
-	"github.com/midnight-vivian/go-data-structures/src/utils"
+	"github.com/midnight-vivian/go-data-structures/utils"
 
-	"github.com/midnight-vivian/go-data-structures/src/data-structures/tree/bst"
+	"github.com/midnight-vivian/go-data-structures/data-structures/tree/bst"
 )
 
 var _ SymbolTableSuper = (*STBST)(nil)
