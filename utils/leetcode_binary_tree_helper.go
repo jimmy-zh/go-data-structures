@@ -57,14 +57,8 @@ func BinaryTreeEqual(t1, t2 *TreeNode) bool {
 	if t1 == nil && t2 == nil {
 		return true
 	}
-	if (t1 == nil && t2 != nil) || (t1 != nil && t2 == nil) {
+	if t1 == nil || t2 == nil || t1.Val != t2.Val {
 		return false
 	}
-	if t1.Val != t2.Val {
-		return false
-	}
-	if !BinaryTreeEqual(t1.Left, t2.Left) || !BinaryTreeEqual(t1.Right, t2.Right) {
-		return false
-	}
-	return true
+	return BinaryTreeEqual(t1.Left, t2.Left) && BinaryTreeEqual(t1.Right, t2.Right)
 }
