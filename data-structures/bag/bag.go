@@ -26,7 +26,7 @@ func (b *Bag) Size() int {
 }
 
 func (b *Bag) Empty() bool {
-	return b.Size() == 0
+	return b.Size() ==0
 }
 
 func (b *Bag) Items() []interface{} {
